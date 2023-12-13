@@ -3,16 +3,16 @@ import java.io.InputStream
 
 
 val inputStream: InputStream = File("src/raw03.txt").inputStream()
-//val lineList = mutableListOf<String>()
+val lineListp = mutableListOf<String>()
 lateinit var schematic: Array<CharArray>
 
-val listOfSymbols = arrayOf('*', '#', '+', '$', '!', '@', '%', '^', '&', '-', '/', '=', '<', '>', '?', '~')
+val listOfSymbols = arrayOf(',','~','`','!','@','#','$','%','^','&','*','(',')','-','_','=','+','/','?','>','<',':','*')
 val listOfNumbers = arrayOf('1', '2', '3', '4', '5', '6', '7', '8', '9')
 fun main()
 {
-    inputStream.bufferedReader().useLines { lines -> lines.forEach { lineList.add(it)} }
+    inputStream.bufferedReader().useLines { lines -> lines.forEach { lineListp.add(it)} }
 
-    schematic = Array(lineList.size) { i -> lineList[i].toCharArray()}
+    schematic = Array(lineListp.size) { i -> lineListp[i].toCharArray()}
 
     var total = 0
 

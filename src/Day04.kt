@@ -15,8 +15,9 @@ fun main()
             lineList.add(it)
         }
     }
-
-    analizeCard(1)
+    for (i in 1..lineList.size) {
+        analizeCard(i)
+    }
 
     println(total)
 
@@ -28,21 +29,22 @@ fun analizeCard(number: Int)
     total++
     var hits = 0
     val split = lineList[number-1].split("\\s+".toRegex())
-    var numbers: Array<Int> = arrayOf(18, 39,  5, 97, 33 ,74 /*,70 ,35 ,40, 72*/)
-    for(i in 2../*11*/ 6)
+    var numbers: MutableList<Int> = mutableListOf<Int>()
+    for(i in 2..11)
     {
-        numbers[i-2] = split[i].toInt()
+        numbers.add(split[i].toInt())
     }
-    var winningNumbers: Array<Int> = arrayOf(62, 23, 33, 94, 18,  5, 91, 74/*, 86, 88, 82, 72, 51, 39, 95, 35, 44, 87, 65, 15, 46, 10,  3,  2, 84*/)
-    for (i in /*13*/8../*37*/15)
+    var winningNumbers: MutableList<Int> = mutableListOf<Int>()
+    for (i in 13..37)
     {
-        winningNumbers[i-8] = split[i].toInt()
+        winningNumbers.add(split[i].toInt())
     }
     numbers.forEach {
         if (winningNumbers.contains(it)) hits++
     }
     for (i in 1..hits)
     {
+        println("hits:" + hits.toString())
         analizeCard(i+number)
     }
 }
